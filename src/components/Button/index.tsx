@@ -11,10 +11,9 @@ interface IButton{
 export const Button:FC<IButton> = ({color, size, text, onClick }:IButton) => {
     return(
         <ButtonContainer
-            type="submit"
             onClick={onClick}
             color={color} 
-            size={size} 
+            size={size}
         >
             {text}
         </ButtonContainer>

@@ -5,7 +5,8 @@ interface IButtonProps{
     size: 'sm' | 'md' | 'lg';
 }
 
-export const ButtonContainer = styled.button<IButtonProps> `
+
+export const ButtonContainer = styled.button<IButtonProps>`
     background-color: ${
         ({color})=> color === 'primary' ? '#F3A126' 
             : color === 'secondary' ? '#21AE1E' 

@@ -30,10 +30,18 @@ export const TableRow = styled.tr`
 `
 
 
-export const TableColumnContent = styled.td`
+export const TableColumnTitle = styled.td`
     color: #333333;
     font-weight: 700;
     font-size: 16px;
+    margin-right: 0.8em;
+    padding-bottom: 0.5em;
+`
+
+export const TableColumnContent = styled.td`
+    color: #333333;
+    font-weight: 400;
+    font-size: 14px;
     margin-right: 0.8em;
     padding-bottom: 0.5em;
 `

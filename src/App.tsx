@@ -1,8 +1,11 @@
 import { Home } from './pages/Home'
+import { SimulationProvider } from './context/simulation';
 
 function App() {
   return (
-    <Home />
+    <SimulationProvider>
+      <Home />
+    </SimulationProvider>
   )
 }
 
