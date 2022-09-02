@@ -1,4 +1,4 @@
-import React, { createContext, Dispatch, FC, SetStateAction, useState } from "react";
+import React, { createContext, Dispatch, FC, ReactNode, SetStateAction, useState } from "react";
 import { ISimulation } from "../interfaces/ISimulation";
 
 const DEFAULT_VALUE = {
@@ -30,9 +30,13 @@ interface IContextProps{
     setSimulation: Dispatch<SetStateAction<ISimulation>>; 
 }
 
+interface Props{
+    children: ReactNode;
+}
+
 const SimulationContext = createContext<IContextProps>(DEFAULT_VALUE);
 
-const SimulationProvider: FC = ({ children })=>{
+const SimulationProvider: FC<Props> = ({ children })=>{
     const [simulation, setSimulation] = useState(DEFAULT_VALUE.simulation);
     return(
         <SimulationContext.Provider value={{simulation, setSimulation}}>
