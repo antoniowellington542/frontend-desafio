@@ -1,4 +1,4 @@
-import { Container, FormContainer, InputForm } from "./style";
+import { Container, FormContainer, InputForm, MessageError, Title } from "./style";
 import { useForm } from 'react-hook-form';
 import { Button } from "../Button";
 import { useContext, useEffect, useState } from "react";
@@ -34,7 +34,7 @@ export const Form = () => {
    
     return(
         <Container>
-            <h2>Preencha o formulário abaixo para simular</h2>
+            <Title>Preencha o formulário abaixo para simular</Title>
             <FormContainer>
                 <form onSubmit={onSubmit}>
                     <InputForm 
@@ -42,26 +42,31 @@ export const Form = () => {
                         placeholder="CPF" 
                         type="text"
                     />
+                    {errors.cpf && (<MessageError>Campo não pode estar vazio!</MessageError>)}
                     <InputForm 
                         {...register('uf', { required: true})}
                         placeholder="UF" 
                         type="text"
                     />
+                    {errors.uf && (<MessageError>Campo não pode estar vazio!</MessageError>)}
                     <InputForm
                         {...register('birthday', { required: true})} 
                         placeholder="DATA DE NASCIMENTO" 
                         type="text"
                     />
+                    {errors.birthday && (<MessageError>Campo não pode estar vazio!</MessageError>)}
                     <InputForm 
                         {...register('value', { required: true, min:50000})}
                         placeholder="QUAL O VALOR DO EMPRÉSTIMO" 
                         type="number"
                     />
+                    {errors.value && (<MessageError>Valor tem que acima de 50000!</MessageError>)}
                     <InputForm 
                         {...register('parcelValue', { required: true, min: 0})}
                         placeholder="QUAL VALOR QUE DESEJA PAGAR POR MÊS?" 
                         type="number"
                     />
+                    {errors.parcelValue && (<MessageError>Valor muito abaixo!</MessageError>)}
                     <Button text="Simular" color="primary" size="lg"/>
                 </form>
             </FormContainer>

@@ -6,7 +6,12 @@ import {
     TableContainer, 
     TableRow, 
     TableColumnContent, 
-    TableColumnTitle
+    TableColumnTitle,
+    Title,
+    TitleInfo,
+    ContentInfo,
+    ContainerInfo,
+    InfoItem
 } from "./style";
 import { SimulationContext } from '../../context/simulation';
 import { Button } from "../Button";
@@ -17,7 +22,7 @@ export const DEFAULT_PARCEL = {
     feesValue: 0,
     valueWithFees: 0,
     parcelValue: 0,
-    payDate: '',
+    payDate: '00/00/00',
 }
 
 export const Simulation = () => {
@@ -42,37 +47,37 @@ export const Simulation = () => {
     return(
         <Container>
             {sucess ? <h1>Emprestimo criado</h1> : null}
-            <h2>Veja a simulação para o seu empréstimo antes de efetivar</h2>
+            <Title>Veja a simulação para o seu empréstimo antes de efetivar</Title>
             <TableContainer>
                 <Table>
-                <div style={{ display: 'flex', justifyContent: 'space-between', width: '80%'}}>
-                    <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
-                        <p>VALOR REQUERIDO:</p>
-                        <p>{simulation?.value ? simulation?.value : 0}</p>
-                    </div>
-                    <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
-                        <p>TAXA DE JUROS</p>
-                        <p>{simulation?.value ? simulation?.tax : 0}</p>
-                    </div>
-                    <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
-                        <p>VALOR DA PARCELA</p>
-                        <p>{simulation?.parcelValue ? simulation?.parcelValue : 0}</p>
-                    </div>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', width: '80%'}}>
-                    <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
-                        <p>TOTAL DE MESES PARA QUITAR</p>
-                        <p>{simulation?.qntParcels  ? simulation?.qntParcels : 0}</p>
-                    </div>
-                    <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
-                        <p>TOTAL DE JUROS</p>
-                        <p>{simulation?.totalTax  ? simulation?.totalTax : 0}</p>
-                    </div>
-                    <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
-                        <p>TOTAL A PAGAR</p>
-                        <p>{simulation?.totalPayValue  ? simulation?.totalPayValue : 0}</p>
-                    </div>
-                </div>
+                    <ContainerInfo>
+                        <InfoItem>
+                            <TitleInfo>VALOR REQUERIDO:</TitleInfo>
+                            <ContentInfo>R$ {simulation?.value ? (simulation?.value).toLocaleString('pt-BR') : 0}</ContentInfo>
+                        </InfoItem>
+                        <InfoItem>
+                            <TitleInfo>TAXA DE JUROS</TitleInfo>
+                            <ContentInfo>{simulation?.value ? simulation?.tax*100 : 0}% aos mês</ContentInfo>
+                        </InfoItem>
+                        <InfoItem>
+                            <TitleInfo>VALOR DA PARCELA</TitleInfo>
+                            <ContentInfo>R$ {simulation?.parcelValue ? (simulation?.parcelValue).toLocaleString('pt-BR') : 0}</ContentInfo>
+                        </InfoItem>
+                    </ContainerInfo>
+                    <ContainerInfo>
+                        <InfoItem>
+                            <TitleInfo>TOTAL DE MESES PARA QUITAR</TitleInfo>
+                            <ContentInfo>{simulation?.qntParcels  ? simulation?.qntParcels : 0} MESES</ContentInfo>
+                        </InfoItem>
+                        <InfoItem>
+                            <TitleInfo>TOTAL DE JUROS</TitleInfo>
+                            <ContentInfo>R$ {simulation?.totalTax  ? (simulation?.totalTax).toLocaleString('pt-BR') : 0}</ContentInfo>
+                        </InfoItem>
+                        <InfoItem>
+                            <TitleInfo>TOTAL A PAGAR</TitleInfo>
+                            <ContentInfo>R$ {simulation?.totalPayValue  ? (simulation?.totalPayValue).toLocaleString('pt-BR') : 0}</ContentInfo>
+                        </InfoItem>
+                    </ContainerInfo>
                     <TableRow>
                         <TableColumnTitle>SALDO DEVEDOR</TableColumnTitle>
                         <TableColumnTitle>JUROS</TableColumnTitle>

@@ -6,7 +6,13 @@ export const Container = styled.div `
     justify-content: center;
     flex-direction: column;
     width: 100%;
-` 
+`
+
+export const Title = styled.h2`
+    font-weight: 700;
+    font-size: 20px;
+    color: #000000;
+`
 
 export const FormContainer = styled.div`
     background-color: #FFFFFF;
@@ -22,7 +28,7 @@ export const InputForm = styled.input`
     border: 1px solid #D4D4D4;
     border-radius: 6px;
     margin-top: 1em;
-
+    margin-bottom: 0.5em;
     &::placeholder{
         padding-left: 0.5em;
         font-weight: 400;
@@ -31,4 +37,9 @@ export const InputForm = styled.input`
         display: flex;
         align-items: center;
     }
+`
+
+export const MessageError = styled.span`
+    color: red;
+    font-size: 1em;
 `
