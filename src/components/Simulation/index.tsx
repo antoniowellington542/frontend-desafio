@@ -51,7 +51,7 @@ export const Simulation = () => {
                         </InfoItem>
                         <InfoItem>
                             <TitleInfo>TAXA DE JUROS</TitleInfo>
-                            <ContentInfo>{simulation?.value ? simulation?.tax*100 : 0}% aos mês</ContentInfo>
+                            <ContentInfo>{simulation?.value ? (simulation?.tax*100).toFixed(2) : 0}% aos mês</ContentInfo>
                         </InfoItem>
                         <InfoItem>
                             <TitleInfo>VALOR DA PARCELA</TitleInfo>

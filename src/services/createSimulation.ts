@@ -11,7 +11,8 @@ interface IRequest{
 
 export default async function createSimulation ({data, setClicked, setSimulation}:IRequest)
 {
-    const { birthday, cpf,uf } = data;
+    const { birthday, cpf} = data;
+    const uf = (data.uf).toUpperCase();
     const parcelValue = Number(data.parcelValue);
     const value = Number(data.value);
     await api.post('/loan/simulate',{

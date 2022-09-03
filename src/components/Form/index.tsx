@@ -28,14 +28,17 @@ export const Form = () => {
                     <InputForm 
                         {...register('cpf', { 
                             required: true, 
-                            
+                            pattern: {
+                                value: /^(([0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}))$/,
+                                message: 'CPF Incorreto'
+                            }
                         })}
                         placeholder="CPF" 
                         type="text"
                     />
                     {errors.cpf && (<MessageError>Cpf inválido</MessageError>)}
                     <InputForm 
-                        {...register('uf', { required: true})}
+                        {...register('uf', { required: true,})}
                         placeholder="UF" 
                         type="text"
                     />
