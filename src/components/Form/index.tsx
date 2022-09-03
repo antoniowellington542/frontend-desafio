@@ -19,18 +19,21 @@ export const Form = () => {
     const onSubmit = handleSubmit(async (data) => {
         await createSimulation({data, setClicked,setSimulation});
     });
-    
+
     return(
         <Container>
             <Title>Preencha o formulário abaixo para simular</Title>
             <FormContainer>
                 <form onSubmit={onSubmit}>
                     <InputForm 
-                        {...register('cpf', { required: true})}
+                        {...register('cpf', { 
+                            required: true, 
+                            
+                        })}
                         placeholder="CPF" 
                         type="text"
                     />
-                    {errors.cpf && (<MessageError>Campo não pode estar vazio!</MessageError>)}
+                    {errors.cpf && (<MessageError>Cpf inválido</MessageError>)}
                     <InputForm 
                         {...register('uf', { required: true})}
                         placeholder="UF" 

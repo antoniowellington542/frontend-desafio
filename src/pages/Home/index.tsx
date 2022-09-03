@@ -33,7 +33,7 @@ export const Home = () =>{
                         </ModalError>}
                     <h1 style={{paddingTop: '2em'}}>{operation.message}</h1>
                     <Button 
-                        text="try Again"
+                        text={operation.success ? 'VOLTAR' : 'TENTE NOVAMENTE'}
                         size="sm" 
                         color="primary"
                         onClick={closeModal}
