@@ -10,7 +10,7 @@ export const ButtonContainer = styled.button<IButtonProps>`
     background-color: ${
         ({color})=> color === 'primary' ? '#F3A126' 
             : color === 'secondary' ? '#21AE1E' 
-            : '#D4D4D4'
+            : '#D3D3D3'
     };
     width: ${
         ({size}) => size === 'lg' ? '100%' : size === 'md' ? '75%' : '50%'
@@ -24,4 +24,10 @@ export const ButtonContainer = styled.button<IButtonProps>`
     font-size: 16px;
     border: none;
     box-shadow: 0px 4px 4px rgba(135, 135, 135, 0.25);
+    cursor: pointer;
+    transition: all ease-in 0.5s;
+    &:active{
+        transform: scale(0.95);
+        transition: all ease-in 0.5s;
+    }
 `

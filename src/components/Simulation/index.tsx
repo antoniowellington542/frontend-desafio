@@ -16,6 +16,7 @@ import {
 import { SimulationContext } from '../../context/simulation';
 import { Button } from "../Button";
 import { IParcel } from "../../interfaces/IParcel";
+import createLoan from "../../services/createLoan";
 
 export const DEFAULT_PARCEL = {
     payValue: 0,
@@ -29,24 +30,17 @@ export const Simulation = () => {
 
     const { simulation } = useContext(SimulationContext);
     const [parcels, setParcels] = useState<IParcel[]>([DEFAULT_PARCEL]);
-    const [sucess, setSucess] = useState(false);
-
+    const {setOperation, clicked } = useContext(SimulationContext);
     useEffect(()=>{
-        console.log(simulation);
         setParcels(simulation.parcels);
     },[simulation]);
 
-    const createLoan = async () =>{
-        await api.post("/loan/create",{
-            simulation
-        }, {headers: {'Content-Type': 'application/json'}})
-                 .then((response)=>setSucess(true))
-                 .catch((err)=>{console.error("error"+err)})
-        }
+    const onSubmit = async () =>{
+        await createLoan({simulation, setOperation});
+    }
 
     return(
         <Container>
-            {sucess ? <h1>Emprestimo criado</h1> : null}
             <Title>Veja a simulação para o seu empréstimo antes de efetivar</Title>
             <TableContainer>
                 <Table>
@@ -98,8 +92,14 @@ export const Simulation = () => {
                         <TableColumnContent>R$ 0</TableColumnContent>
                     </TableRow>
                 </Table>
+                <Button 
+                    color="secondary"
+                    size="md"   
+                    text="Efetivar o empréstimo" 
+                    onClick={onSubmit}
+                    lock={!clicked}
+                />
             </TableContainer>
-            <Button color="secondary" size="md" text="Efetivar o empréstimo" onClick={createLoan}/>
         </Container>
     )
 }

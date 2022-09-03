@@ -29,6 +29,7 @@ export const InputForm = styled.input`
     border-radius: 6px;
     margin-top: 1em;
     margin-bottom: 0.5em;
+    font-size: 18px;
     &::placeholder{
         padding-left: 0.5em;
         font-weight: 400;

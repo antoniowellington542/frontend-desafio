@@ -6,14 +6,17 @@ interface IButton{
     text: string;
     size: 'sm' | 'md' | 'lg';
     onClick?: ()=>void;
+    lock?: boolean;
 }
 
-export const Button:FC<IButton> = ({color, size, text, onClick }:IButton) => {
+export const Button:FC<IButton> = ({color, size, text, onClick, lock}:IButton) => {
+    console.log(lock)
     return(
         <ButtonContainer
             onClick={onClick}
-            color={color} 
+            color={lock ? 'disabled' : color} 
             size={size}
+            disabled={lock ? true : false}
         >
             {text}
         </ButtonContainer>

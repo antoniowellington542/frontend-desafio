@@ -1,4 +1,5 @@
 import React, { createContext, Dispatch, FC, ReactNode, SetStateAction, useState } from "react";
+import { IOperationStatus } from "../interfaces/IOperationStatus";
 import { ISimulation } from "../interfaces/ISimulation";
 
 const DEFAULT_VALUE = {
@@ -22,12 +23,26 @@ const DEFAULT_VALUE = {
             }
         ]
     },
-    setSimulation: ()=>{}
+    setSimulation: ()=>{},
+    operation: {
+        executed: false,
+        success: false,
+        message: ''
+    },
+    setOperation: ()=>{},
+    clicked: false,
+    setClicked: ()=>{},
 }
+
+
 
 interface IContextProps{
     simulation: ISimulation;
-    setSimulation: Dispatch<SetStateAction<ISimulation>>; 
+    setSimulation: Dispatch<SetStateAction<ISimulation>>;
+    operation: IOperationStatus;
+    setOperation: Dispatch<SetStateAction<IOperationStatus>>;
+    clicked: boolean;
+    setClicked: Dispatch<SetStateAction<boolean>>;
 }
 
 interface Props{
@@ -38,8 +53,18 @@ const SimulationContext = createContext<IContextProps>(DEFAULT_VALUE);
 
 const SimulationProvider: FC<Props> = ({ children })=>{
     const [simulation, setSimulation] = useState(DEFAULT_VALUE.simulation);
+    const [operation, setOperation] = useState(DEFAULT_VALUE.operation);
+    const [clicked, setClicked] = useState(DEFAULT_VALUE.clicked);
     return(
-        <SimulationContext.Provider value={{simulation, setSimulation}}>
+        <SimulationContext.Provider 
+            value={{
+                simulation, 
+                setSimulation, 
+                operation, 
+                setOperation,
+                clicked,
+                setClicked
+            }}>
             {children}
         </SimulationContext.Provider>
     )

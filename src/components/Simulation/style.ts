@@ -19,15 +19,32 @@ export const TableContainer = styled.div`
     background-color: #FFFFFF;
     max-width: 75%;
     width: 75%;
-    padding: 3em 3em 2em 3em;
+    padding: 0.5em 3em 2em 3em;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media screen and (max-width: 799px){
+        width: 100%;
+        max-width: 100%;
+        padding: 0.5em 1em 1em 1em;
+    }
 `
 
 export const ContainerInfo = styled.div`
-    display: flex;
+    display: grid;
+    grid-template-columns: auto auto auto;
     justify-content: space-between;
     width: 80%;
     margin-bottom: 2em;
+
+    @media screen and (max-width: 799px){
+        grid-template-columns: auto auto;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center ;
+    }
 `;
 
 export const InfoItem = styled.div`
@@ -49,16 +66,21 @@ export const ContentInfo = styled.p`
 `
 
 export const Table = styled.table`
-    padding: 1em;
+    padding: 0.5em;
     width: 100%;
 `;
 
 export const TableRow = styled.tr`
-    display: flex;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
     justify-content: space-between;
     width: 100%;
     margin-bottom: 1em;
     border-bottom: 1px solid #C4C4C4;
+
+    @media screen and (max-width: 799px){
+        grid-template-columns: auto auto;
+    }
 `
 
 
