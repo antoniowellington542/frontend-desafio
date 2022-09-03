@@ -34,13 +34,13 @@ export const TableContainer = styled.div`
 
 export const ContainerInfo = styled.div`
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 30% 30% 20%;
     justify-content: space-between;
     width: 80%;
     margin-bottom: 2em;
 
     @media screen and (max-width: 799px){
-        grid-template-columns: auto auto;
+        grid-template-columns: 50% 50%;
         width: 100%;
         justify-content: space-between;
         align-items: center ;
@@ -72,7 +72,7 @@ export const Table = styled.table`
 
 export const TableRow = styled.tr`
     display: grid;
-    grid-template-columns: auto auto auto auto auto;
+    grid-template-columns: 20% 13% 25% 20% 20%;
     justify-content: space-between;
     width: 100%;
     margin-bottom: 1em;
